@@ -2,9 +2,10 @@
 <html lang="pt-BR">
 
 <head>
+   
   <meta charset="UTF-8">
-  <title>Calculadora de IMC</title>
-  <style>
+    <title>Calculadora de IMC</title>
+    <style>
     body {
       font-family: Arial;
       padding: 20px;
@@ -29,17 +30,17 @@
 </head>
 
 <body>
-  <h1>Calculadora de IMC</h1>
-  <input type="number" id="peso" placeholder="Peso (kg)" step="0.1">
-  <input type="number" id="altura" placeholder="Altura (m)" step="0.01">
-  <button onclick="calcularIMC()">Calcular</button>
-  <div id="resultado"></div>
+    <h1>Calculadora de IMC</h1>
+    <input type="number" id="peso" placeholder="Peso (kg)" step="0.1">
+    <input type="number" id="altura" placeholder="Altura (m)" step="0.01">
+    <button onclick="calcularIMC()">Calcular</button>
+    <div id="resultado"></div>
 
+   
   <script>
-    // ⚡ Defina aqui o link da API
-    // NOVO API_URL (com /api no final)
-    // NOVO API_URL (sem o /api)
-const API_URL = 'https://api-imc-nu.vercel.app/index.js';
+    // ⚡ URL CORRETA: Aponta para a raiz do domínio da sua API, que será mapeada pelo vercel.json
+    // Use o seu domínio de produção, que é o mais estável.
+    const API_URL = 'https://api-imc-nu.vercel.app/';
 
 
     async function calcularIMC() {
@@ -63,10 +64,12 @@ const API_URL = 'https://api-imc-nu.vercel.app/index.js';
         if (resposta.ok) {
           resultado.innerText = `IMC: ${dados.imc} - ${dados.classificacao}`;
         } else {
-          resultado.innerText = dados.erro || 'Erro ao calcular.';
+          // Esta linha tratará os erros 400 e 405 definidos na API
+          resultado.innerText = dados.erro || 'Erro desconhecido ao calcular.';
         }
       } catch (erro) {
-        resultado.innerText = 'Erro de conexão com a API.';
+        // Esta linha agora deve ser a única a pegar erro de CORS ou 404
+        resultado.innerText = 'Erro de conexão com a API. Verifique o console para detalhes.';
       }
     }
   </script>
