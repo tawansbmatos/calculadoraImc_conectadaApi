@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Calculadora de IMC</title>
   <style>
-    body { font-family: Arial; padding: 20px; max-width: 400px; margin: auto; text-align: center; }
-    input, button { display: block; margin: 10px auto; padding: 8px; width: 90%; }
-    #resultado { margin-top: 20px; font-weight: bold; }
+    body {
+      font-family: Arial;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      text-align: center;
+    }
+
+    input,
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 8px;
+      width: 90%;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+    }
   </style>
 </head>
+
 <body>
   <h1>Calculadora de IMC</h1>
   <input type="number" id="peso" placeholder="Peso (kg)" step="0.1">
@@ -18,7 +37,8 @@
 
   <script>
     // ⚡ Defina aqui o link da API
-    const API_URL = 'https://api-imc-nu.vercel.app/api/calculadora-imc';
+    // NOVO API_URL (com /api no final)
+    const API_URL = 'https://api-imc-nu.vercel.app/api';
 
 
     async function calcularIMC() {
@@ -50,4 +70,5 @@
     }
   </script>
 </body>
+
 </html>
